@@ -1,0 +1,6 @@
+{
+  "name": "KinaBecha - E-Commerce Store",
+  "description": "Authentic gadgets, studio equipment, solar systems and smart electronics in Bangladesh",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
