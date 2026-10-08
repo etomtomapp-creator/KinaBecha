@@ -196,41 +196,70 @@ export const MobileMenuDrawer: React.FC<MobileMenuDrawerProps> = ({
 
             {/* Shop by Category Accordion */}
             <div className="p-3">
-              <p className="text-[11px] font-black uppercase tracking-wider text-slate-400 px-3 mb-2">
-                Shop By Category
-              </p>
-              <div className="space-y-1">
+              <div className="flex items-center justify-between px-2 mb-2">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  Shop By Category
+                </span>
+                <span className="text-[10px] text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+                  {CATEGORIES.length} Categories
+                </span>
+              </div>
+
+              <div className="space-y-0.5">
                 {CATEGORIES.map((cat) => {
                   const isExpanded = expandedCategoryId === cat.id;
+                  const catIcon =
+                    cat.id === 'solar-green-energy'
+                      ? '☀️'
+                      : cat.id === 'youtube-studio-gears'
+                      ? '🎙️'
+                      : cat.id === 'audio-headphones'
+                      ? '🎧'
+                      : cat.id === 'smart-gadgets'
+                      ? '⌚'
+                      : cat.id === 'computer-office'
+                      ? '💻'
+                      : '📱';
+
                   return (
-                    <div key={cat.id} className="rounded-xl overflow-hidden border border-slate-100">
+                    <div key={cat.id} className="rounded-xl transition-colors">
                       <div
                         onClick={() => toggleCategory(cat.id)}
-                        className="p-3 bg-white hover:bg-slate-50 flex items-center justify-between cursor-pointer text-xs font-bold text-slate-800"
+                        className={`p-2.5 rounded-xl flex items-center justify-between cursor-pointer transition-colors ${
+                          isExpanded
+                            ? 'bg-blue-50/80 text-blue-950 font-bold'
+                            : 'hover:bg-slate-50 text-slate-800'
+                        }`}
                       >
-                        <div className="flex flex-col">
-                          <span>{cat.name}</span>
-                          <span className="text-[10px] text-slate-400 font-normal">
-                            {cat.bengaliName}
-                          </span>
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="text-base shrink-0">{catIcon}</span>
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-xs font-bold truncate">{cat.name}</span>
+                            <span className="text-[10px] text-slate-400 font-normal truncate">
+                              {cat.bengaliName}
+                            </span>
+                          </div>
                         </div>
-                        {isExpanded ? (
-                          <ChevronDown className="w-4 h-4 text-blue-900" />
-                        ) : (
-                          <ChevronRight className="w-4 h-4 text-slate-400" />
-                        )}
+                        <div className="shrink-0 ml-2">
+                          {isExpanded ? (
+                            <ChevronDown className="w-4 h-4 text-blue-900 transition-transform" />
+                          ) : (
+                            <ChevronRight className="w-4 h-4 text-slate-400" />
+                          )}
+                        </div>
                       </div>
 
                       {isExpanded && (
-                        <div className="bg-slate-50 p-2 border-t border-slate-100 space-y-1 text-xs">
+                        <div className="ml-7 my-1 pl-3 border-l-2 border-blue-200 space-y-0.5 text-xs animate-in fade-in duration-150">
                           <button
                             onClick={() => {
                               onSelectCategory(cat.slug);
                               onClose();
                             }}
-                            className="w-full text-left py-1.5 px-3 rounded text-blue-900 font-bold hover:bg-white transition-colors"
+                            className="w-full text-left py-1.5 px-2.5 rounded-lg text-blue-900 font-bold hover:bg-blue-50 transition-colors flex items-center justify-between"
                           >
-                            View All in {cat.name} →
+                            <span>View All in {cat.name}</span>
+                            <span className="text-[11px] text-blue-600 font-bold">→</span>
                           </button>
                           {cat.subcategories.map((sub) => (
                             <button
@@ -239,9 +268,9 @@ export const MobileMenuDrawer: React.FC<MobileMenuDrawerProps> = ({
                                 onSelectCategory(cat.slug);
                                 onClose();
                               }}
-                              className="w-full text-left py-1.5 px-3 rounded text-slate-600 hover:text-blue-900 hover:bg-white transition-colors"
+                              className="w-full text-left py-1.5 px-2.5 rounded-lg text-slate-600 hover:text-blue-900 hover:bg-slate-50 transition-colors flex items-center justify-between"
                             >
-                              • {sub}
+                              <span>{sub}</span>
                             </button>
                           ))}
                         </div>
