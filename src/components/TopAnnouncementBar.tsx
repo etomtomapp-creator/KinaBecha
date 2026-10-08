@@ -1,37 +1,43 @@
 import React from 'react';
-import { Heart, AlertTriangle } from 'lucide-react';
+import { Phone, ShieldCheck } from 'lucide-react';
 
 export const TopAnnouncementBar: React.FC = () => {
   return (
-    <div className="bg-[#0f172a] text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-        {/* Left: Red heart + Assalamu Walaikum + Showing items from: OnlineStock */}
+    <div className="bg-[#0f172a] text-slate-300 text-[11px] py-1.5 px-3 sm:px-6 border-b border-slate-800/80 select-none">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        {/* Left: Greeting & Brand Promise */}
         <div className="flex items-center gap-2 tracking-tight">
-          <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 shrink-0" />
-          <span className="font-medium text-slate-100">Assalamu Walaikum</span>
-          <span className="text-slate-500">|</span>
-          <span className="text-slate-400">
-            Showing items from: <strong className="text-emerald-400 font-semibold">OnlineStock</strong>
+          <span className="font-medium text-slate-200">Assalamu Alaikum!</span>
+          <span className="text-slate-600 hidden sm:inline">|</span>
+          <span className="text-slate-400 hidden sm:inline">
+            Welcome to <strong className="text-slate-200 font-semibold">KinaBecha</strong> — 100% Authentic Products
           </span>
         </div>
 
-        {/* Centre: Yellow warning */}
-        <div className="hidden lg:flex items-center gap-1.5 bg-amber-950/60 border border-amber-600/30 text-amber-300 px-2.5 py-0.5 rounded text-[11px]">
-          <AlertTriangle className="w-3 h-3 text-amber-400 shrink-0" />
-          <span>This is a Beta Version – Some items may not be in stock</span>
+        {/* Center: Nationwide Delivery & Guarantee (Desktop) */}
+        <div className="hidden lg:flex items-center gap-2 text-slate-400">
+          <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+          <span>Cash on Delivery Available Across Bangladesh</span>
         </div>
 
-        {/* Right: Social icons & Hotline */}
-        <div className="flex items-center gap-4 text-slate-400">
-          <span className="hidden sm:inline text-slate-300">
-            Hotline: <strong className="text-white font-semibold">01712-345678</strong> (10 AM – 11 PM)
-          </span>
-          <div className="flex items-center gap-2.5">
+        {/* Right: Hotline & Socials */}
+        <div className="flex items-center gap-4 shrink-0 text-slate-400">
+          <a
+            href="tel:01712345678"
+            className="text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+          >
+            <Phone className="w-3 h-3 text-blue-400" />
+            <span className="hidden sm:inline text-slate-400">Hotline:</span>
+            <strong className="text-white font-semibold tracking-wide">01712-345678</strong>
+            <span className="hidden md:inline text-slate-500 text-[10px]">(10 AM – 11 PM)</span>
+          </a>
+
+          <div className="hidden sm:flex items-center gap-2.5 pl-2 border-l border-slate-800">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-blue-400 transition-colors"
+              className="text-slate-400 hover:text-blue-400 transition-colors"
               title="Facebook"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -42,7 +48,7 @@ export const TopAnnouncementBar: React.FC = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-pink-400 transition-colors"
+              className="text-slate-400 hover:text-pink-400 transition-colors"
               title="Instagram"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -53,10 +59,10 @@ export const TopAnnouncementBar: React.FC = () => {
               href="https://youtube.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-red-500 transition-colors"
+              className="text-slate-400 hover:text-red-400 transition-colors"
               title="YouTube"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
             </a>
